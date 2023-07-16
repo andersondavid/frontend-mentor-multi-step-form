@@ -1,7 +1,7 @@
 import React from 'react'
 
 type PropsTypes = {
-  children: JSX.Element
+  children: React.ReactNode
 }
 
 export default function PageContainer({ children }: PropsTypes) {
