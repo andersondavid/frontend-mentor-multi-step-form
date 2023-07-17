@@ -65,7 +65,7 @@ const yearlyPlansAddOns: PlanItemAddOns[] = [
 
 export default function PickAddOns() {
   const [typeDurationAddOns, setTypeDurationAddOns] =
-    useState<PlanItemAddOns[]>(monthlyPlansAddOns)
+    useState<PlanItemAddOns[]>(yearlyPlansAddOns)
 
   const handleCheckboxChange = (name: string) => {
     setTypeDurationAddOns(
@@ -79,11 +79,7 @@ export default function PickAddOns() {
         return item
       })
     )
-
-    console.log(typeDurationAddOns)
   }
-
-  console.log('RENDER')
 
   return (
     <article>
