@@ -1,37 +1,65 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, {
+  Dispatch,
+  SetStateAction,
+  forwardRef,
+} from 'react'
 import Switch from './Switch'
+
+type PropsTypes = {
+  durationCurrent: Duration
+  setDurationCurrent: Dispatch<SetStateAction<Duration>>
+}
 
 enum Duration {
   Monthy = 'MONTHY',
-  Yearly = 'YEARLY'
+  Yearly = 'YEARLY',
 }
 
-export default function PlanDurationSwitch() {
-  const [duration, setDuration] = useState(true)
-
-  const changeDurationHandler = (value: boolean) => {
-    setDuration(value)
+function PlanDurationSwitch({
+  durationCurrent,
+  setDurationCurrent,
+}: PropsTypes) {
+  const changeDurationHandler = (value?: Duration) => {
+    if (value == Duration.Monthy) {
+      setDurationCurrent(Duration.Monthy)
+    } else if (value == Duration.Yearly) {
+      setDurationCurrent(Duration.Yearly)
+    } else if (value == undefined && durationCurrent == Duration.Monthy) {
+      setDurationCurrent(Duration.Yearly)
+    } else if (value == undefined && durationCurrent == Duration.Yearly) {
+      setDurationCurrent(Duration.Monthy)
+    }
   }
 
   return (
-    <div className="bg-alabaster flex h-12 items-center justify-center rounded-lg">
+    <div className="flex h-12 items-center justify-center rounded-lg bg-alabaster">
       <button
-        onClick={() => changeDurationHandler(true)}
-        className={`${duration ? 'text-marine-blue' : 'text-cool-gray'} mx-5 font-medium`}
+        onClick={() => changeDurationHandler(Duration.Monthy)}
+        className={`${
+          durationCurrent == Duration.Monthy
+            ? 'text-marine-blue'
+            : 'text-cool-gray'
+        } mx-5 font-medium`}
       >
         Monthy
       </button>
-      <button onClick={() => changeDurationHandler(!duration)}>
-        <Switch active={duration} />
+      <button onClick={() => changeDurationHandler()}>
+        <Switch duration={durationCurrent} />
       </button>
       <button
-        onClick={() => changeDurationHandler(false)}
-        className={`${!duration ? 'text-marine-blue' : 'text-cool-gray'} mx-5 font-medium`}
+        onClick={() => changeDurationHandler(Duration.Yearly)}
+        className={`${
+          durationCurrent == Duration.Yearly
+            ? 'text-marine-blue'
+            : 'text-cool-gray'
+        } mx-5 font-medium`}
       >
         Yearly
       </button>
     </div>
   )
 }
+
+export default forwardRef(PlanDurationSwitch)
