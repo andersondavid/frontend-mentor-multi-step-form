@@ -16,13 +16,15 @@ module.exports = {
       'light-gray': 'hsl(229, 24%, 87%)',
       'magnolia': 'hsl(217, 100%, 97%)',
       'alabaster': 'hsl(231, 100%, 99%)',
-      'white': 'hsl(0, 0%, 100%)'
+      'white': 'hsl(0, 0%, 100%)',
+    },
+    fontFamily: {
+      ubuntu: ['Ubuntu', 'sans-serif'],
     },
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'sidebar-mobile': "url('/assets/images/bg-sidebar-mobile.svg')",
+        'sidebar-desktop': "url('/assets/images/bg-sidebar-desktop.svg')",
       },
     },
   },
