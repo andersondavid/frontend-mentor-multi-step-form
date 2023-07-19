@@ -1,38 +1,35 @@
 'use client'
 
-import React from 'react'
-import { useForm, Resolver } from 'react-hook-form'
-import InputField from '../../components/InputField'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-type FormValues = {
-  name: string
-  email: string
-  phone: string
-}
+import InputField from './InputField'
 
-const resolver: Resolver<FormValues> = async (values) => {
-  return {
-    values: values.name ? values : {},
-    errors: !values.name
-      ? {
-          name: {
-            type: 'required',
-            message: 'This is required.',
-          },
-        }
-      : {},
-  }
-}
+const schema = z.object({
+  name: z.string().min(1, 'This field is required'),
+  phone: z.string().min(1, 'This field is required'),
+  email: z
+    .string({ required_error: 'This field is required' })
+    .email({ message: 'Invalid email address' }),
+})
+
+type FormValues = z.infer<typeof schema>
 
 export default function PersonalInfo() {
-  const { register, handleSubmit, formState } = useForm<FormValues>()
-  const { errors } = formState
-  
+  const { register, getValues } = useForm<FormValues>()
+  const [listErrors, setListErrors] = useState<z.ZodIssue | undefined>()
 
-  const onSubmit = handleSubmit((data: FormValues) => {
-    console.log('data ', data)
-    console.log('errors ', errors)
-  })
+  const onSubmit = () => {
+    const data = getValues()
+    const validInputs = schema.safeParse(data)
+    if (validInputs.success) {
+      setListErrors(undefined)
+    } else {
+      let errors = validInputs.error?.issues[0]
+      setListErrors(errors)
+    }
+  }
 
   return (
     <article>
@@ -41,34 +38,36 @@ export default function PersonalInfo() {
         Please provide your name, email adress, and phone number.
       </p>
       <div className="">
-        <form onSubmit={onSubmit} noValidate>
-          <InputField
-            register={register}
-            id={'name'}
-            name={'name'}
-            error={{}}
-            label="Name"
-            placeholder="e.g. Stephen King"
-          />
-          <InputField
-            register={register}
-            id={'email'}
-            name={'email'}
-            error={{}}
-            label="Email Andress"
-            placeholder="e.g. stephenking@lorem.com"
-          />
-          <InputField
-            register={register}
-            id={'phone'}
-            name={'phone'}
-            error={{}}
-            label="Phone Number"
-            placeholder="e.g. + 1 234 567 890"
-          />
-          {errors.name && JSON.stringify(errors)}
-          <input type="submit" value={'Oiasdasdasdasd'} />
-        </form>
+        <InputField
+          register={register}
+          error={listErrors}
+          id={'name'}
+          key={'name'}
+          name={'name'}
+          label={'Name'}
+          type={'text'}
+          placeholder="e.g. Stephen King"
+        />
+        <InputField
+          register={register}
+          error={listErrors}
+          id={'email'}
+          key={'email'}
+          name={'email'}
+          label={'Email Andress'}
+          type={'email'}
+          placeholder="e.g. stephenking@lorem.com"
+        />
+        <InputField
+          register={register}
+          error={listErrors}
+          id={'phone'}
+          key={'phone'}
+          name={'phone'}
+          label={'Phone Number'}
+          type={'text'}
+          placeholder="e.g. + 1 234 567 890"
+        />
       </div>
     </article>
   )
