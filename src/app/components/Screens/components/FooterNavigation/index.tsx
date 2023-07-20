@@ -7,18 +7,17 @@ type PropsTypes = {
 }
 
 export default function FooterNavigation({
-    next,
-    previous,
-    confirm
+  next,
+  previous,
+  confirm,
 }: PropsTypes) {
-
   const navigator = (router: Pages) => {
-    return
+    console.log('navigator ', router)
   }
 
   return (
     <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white">
-      {previous && (
+      {previous != undefined && (
         <button
           onClick={() => navigator(previous)}
           className="mx-2 my-4 rounded-md p-2 font-medium text-cool-gray"
@@ -26,7 +25,7 @@ export default function FooterNavigation({
           Go Back
         </button>
       )}
-      {next && (
+      {next != undefined && (
         <button
           onClick={() => navigator(next)}
           className="m-4 ml-auto rounded-md bg-marine-blue p-2 px-4 font-medium text-white"
@@ -34,7 +33,7 @@ export default function FooterNavigation({
           Next Step
         </button>
       )}
-      {confirm && (
+      {confirm != undefined && (
         <button
           onClick={() => confirm()}
           className="m-4 ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white"
