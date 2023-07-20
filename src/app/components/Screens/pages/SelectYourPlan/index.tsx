@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import PlanSelectOption from './components/PlanSelectOption'
 import PlanDurationSwitch from './components/PlanDurationSwitch'
+import FooterNavigation, { Pages } from '../../components/FooterNavigation'
 
 type PlanItem = {
   iconUrl: string
@@ -96,6 +97,7 @@ export default function SelectYourPlan() {
           setDurationCurrent={setDurationCurrent}
         />
       </div>
+      <FooterNavigation next={Pages.PICK_ADDONS} previous={Pages.PERSONAL_INFO} />
     </article>
   )
 }

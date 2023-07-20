@@ -1,4 +1,5 @@
 import React from 'react'
+import FooterNavigation, { Pages } from '../../components/FooterNavigation'
 
 export default function FinishingUp() {
   return (
@@ -37,6 +38,7 @@ export default function FinishingUp() {
           $120/yr
         </p>
       </div>
+      <FooterNavigation previous={Pages.PICK_ADDONS} confirm={() => {}} />
     </article>
   )
 }

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import InputField from './InputField'
+import FooterNavigation, { Pages } from '../../components/FooterNavigation'
 
 const schema = z.object({
   name: z.string().min(1, 'This field is required'),
@@ -69,6 +70,7 @@ export default function PersonalInfo() {
           placeholder="e.g. + 1 234 567 890"
         />
       </div>
+      <FooterNavigation next={Pages.SELECT_YOUR_PLAN} />
     </article>
   )
 }

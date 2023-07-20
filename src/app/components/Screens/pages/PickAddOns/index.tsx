@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import AddOnsSelectOption from './components/AddOnsSelectOption'
+import FooterNavigation, { Pages } from '../../components/FooterNavigation'
 
 type PlanItemAddOns = {
   name: string
@@ -9,11 +10,6 @@ type PlanItemAddOns = {
   title: string
   desc: string
   price: string
-}
-
-enum Duration {
-  Monthy = 'MONTHY',
-  Yearly = 'YEARLY',
 }
 
 const monthlyPlansAddOns: PlanItemAddOns[] = [
@@ -102,6 +98,7 @@ export default function PickAddOns() {
           )
         })}
       </div>
+      <FooterNavigation next={Pages.FINISHING_UP} previous={Pages.SELECT_YOUR_PLAN} />
     </article>
   )
 }
