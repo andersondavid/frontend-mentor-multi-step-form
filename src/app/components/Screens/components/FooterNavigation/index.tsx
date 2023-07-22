@@ -16,11 +16,11 @@ export default function FooterNavigation({
   }
 
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white">
+    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-4 md:absolute md:mt-auto md:p-0 md:pb-4">
       {previous != undefined && (
         <button
           onClick={() => navigator(previous)}
-          className="mx-2 my-4 rounded-md p-2 font-medium text-cool-gray"
+          className="rounded-md font-medium text-cool-gray"
         >
           Go Back
         </button>
@@ -28,7 +28,7 @@ export default function FooterNavigation({
       {next != undefined && (
         <button
           onClick={() => navigator(next)}
-          className="m-4 ml-auto rounded-md bg-marine-blue p-2 px-4 font-medium text-white"
+          className="ml-auto rounded-md bg-marine-blue p-2 px-4 font-medium text-white"
         >
           Next Step
         </button>
@@ -36,7 +36,7 @@ export default function FooterNavigation({
       {confirm != undefined && (
         <button
           onClick={() => confirm()}
-          className="m-4 ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white"
+          className="ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white"
         >
           Confirm
         </button>

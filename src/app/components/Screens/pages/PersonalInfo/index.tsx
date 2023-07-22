@@ -33,7 +33,7 @@ export default function PersonalInfo() {
   }
 
   return (
-    <article>
+    <article className="relative h-full w-full">
       <h2 className="page-title">Personal info</h2>
       <p className="page-desc text-cool-gray">
         Please provide your name, email adress, and phone number.
@@ -70,7 +70,10 @@ export default function PersonalInfo() {
           placeholder="e.g. + 1 234 567 890"
         />
       </div>
-      <FooterNavigation next={Pages.SELECT_YOUR_PLAN} />
+      <FooterNavigation
+        next={Pages.SELECT_YOUR_PLAN}
+        previous={Pages.FINISHING_UP}
+      />
     </article>
   )
 }

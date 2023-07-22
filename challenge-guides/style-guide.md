@@ -7,6 +7,9 @@ The designs were created to the following widths:
 - Mobile: 375px
 - Desktop: 1440px
 
+- Sidebar Desktop: 275px
+- Main screen desktop: 600px
+
 ## Colors
 
 ### Primary
