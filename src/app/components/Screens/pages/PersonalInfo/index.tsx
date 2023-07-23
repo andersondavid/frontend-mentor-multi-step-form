@@ -38,7 +38,7 @@ export default function PersonalInfo() {
       <p className="page-desc text-cool-gray">
         Please provide your name, email adress, and phone number.
       </p>
-      <div className="">
+      <div className="mt-6">
         <InputField
           register={register}
           error={listErrors}

@@ -24,9 +24,9 @@ export default function InputField({
   const errorCheck = error?.path[0] === name
 
   return (
-    <div className="pt-2">
+    <div className="mt-4">
       <div className="flex justify-between pb-[2px]">
-        <label htmlFor={name} className="block text-sm text-marine-blue">
+        <label htmlFor={name} className="block text-sm text-marine-blue leading-none">
           {label}
         </label>
         {errorCheck && (
