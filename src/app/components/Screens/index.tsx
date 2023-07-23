@@ -19,7 +19,7 @@ enum Pages {
 }
 
 export default function Screens() {
-  const [currentPage, setCurrentPage] = useState(Pages.PERSONAL_INFO)
+  const [currentPage, setCurrentPage] = useState(Pages.SELECT_YOUR_PLAN)
 
   return (
     <div className="m-auto w-full max-w-[941px] px-4">
@@ -27,7 +27,7 @@ export default function Screens() {
 
       <PageContainer>
         <DesktopSidebar />
-        <div className="md:mx-auto md:pt-[60px]">
+        <div className="md:mx-auto">
           <div className="h-full w-full md:max-w-md">
             {currentPage == Pages.PERSONAL_INFO && <PersonalInfo />}
             {currentPage == Pages.SELECT_YOUR_PLAN && <SelectYourPlan />}

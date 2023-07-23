@@ -18,13 +18,13 @@ export default function PlanSelectOption({
   return (
     <div
       className={`${
-        active ? 'border-marine-blue bg-alabaster ' : 'border-light-gray'
-      } my-4 flex rounded-md border-[1px] px-4`}
+        active ? 'border-purplish-blue bg-alabaster ' : 'border-light-gray'
+      } my-3 flex rounded-md border-[1px] p-[14px]`}
     >
-      <div className="py-5">
+      <div className="">
         <img src={iconUrl} />
       </div>
-      <div className="px-3 py-4">
+      <div className="px-3">
         <h3 className="font-ubuntu text-base font-medium antialiased">
           {title}
         </h3>

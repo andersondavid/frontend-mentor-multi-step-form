@@ -63,21 +63,20 @@ export default function SelectYourPlan() {
   )
 
   useEffect(() => {
-    if(durationCurrent == Duration.Monthy){
+    if (durationCurrent == Duration.Monthy) {
       setTypeDuration(monthlyPlan)
-    } else if(durationCurrent == Duration.Yearly){
+    } else if (durationCurrent == Duration.Yearly) {
       setTypeDuration(yearlyPlan)
     }
   })
-  
 
   return (
-    <article>
+    <article className="relative h-full w-full md:pt-[60px]">
       <h2 className="page-title">Select yout plan</h2>
-      <p className="page-desc text-cool-gray">
+      <p className="page-desc">
         Your have the option of monthly or yearly billing.
       </p>
-      <div>
+      <div className="mt-6">
         {typeDuration.map((item, index) => {
           return (
             <span onClick={() => setPlanSelected(index)}>
@@ -97,7 +96,10 @@ export default function SelectYourPlan() {
           setDurationCurrent={setDurationCurrent}
         />
       </div>
-      <FooterNavigation next={Pages.PICK_ADDONS} previous={Pages.PERSONAL_INFO} />
+      <FooterNavigation
+        next={Pages.PICK_ADDONS}
+        previous={Pages.PERSONAL_INFO}
+      />
     </article>
   )
 }

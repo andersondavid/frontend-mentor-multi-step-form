@@ -18,6 +18,7 @@ module.exports = {
       'alabaster': 'hsl(231, 100%, 99%)',
       'white': 'hsl(0, 0%, 100%)',
       'transparent': '#00000000',
+      'black': '#000000'
     },
     fontFamily: {
       ubuntu: ['Ubuntu', 'sans-serif'],
