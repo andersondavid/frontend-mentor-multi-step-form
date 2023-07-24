@@ -34,7 +34,7 @@ function PlanDurationSwitch({
   }
 
   return (
-    <div className="flex h-12 items-center justify-center rounded-lg bg-alabaster">
+    <div className="flex h-12 items-center justify-center rounded-lg bg-alabaster mt-6">
       <button
         onClick={() => changeDurationHandler(Duration.Monthy)}
         className={`${

@@ -22,12 +22,12 @@ export default function Screens() {
   const [currentPage, setCurrentPage] = useState(Pages.PERSONAL_INFO)
 
   return (
-    <div className="m-auto w-full max-w-[941px] px-4">
+    <div className="m-auto w-full px-4 md:px-0">
       <MobileStepIndicator />
 
       <PageContainer>
         <DesktopSidebar />
-        <div className="md:mx-auto md:pt-[60px]">
+        <div className="md:mx-auto">
           <div className="h-full w-full md:max-w-md">
             {currentPage == Pages.PERSONAL_INFO && <PersonalInfo />}
             {currentPage == Pages.SELECT_YOUR_PLAN && <SelectYourPlan />}
