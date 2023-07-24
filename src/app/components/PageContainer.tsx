@@ -6,7 +6,7 @@ type PropsTypes = {
 
 export default function PageContainer({ children }: PropsTypes) {
   return (
-    <div className="m-auto max-w-[940px] rounded-2xl bg-white px-6 py-9 shadow-xl shadow-light-gray md:flex md:p-4">
+    <div className="rounded-2xl bg-white p-6 shadow-xl shadow-light-gray">
       {children}
     </div>
   )

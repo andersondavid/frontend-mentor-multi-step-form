@@ -1,5 +1,7 @@
 import React from 'react'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import FooterNavigation, {
+  Pages,
+} from '@/app/components/FooterNavigation'
 
 export default function FinishingUp() {
   return (

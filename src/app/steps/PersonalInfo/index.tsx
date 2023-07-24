@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import InputField from './InputField'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import FooterNavigation, { Pages } from '@/app/components/FooterNavigation'
 
 const schema = z.object({
   name: z.string().min(1, 'This field is required'),
