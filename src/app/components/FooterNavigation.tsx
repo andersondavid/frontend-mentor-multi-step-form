@@ -16,7 +16,7 @@ export default function FooterNavigation({
   }
 
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-4 md:absolute md:mt-auto md:p-0 md:pb-4">
+    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-4 md:absolute md:absolute md:mt-auto md:px-0 md:py-4">
       {previous != undefined && (
         <button
           onClick={() => navigator(previous)}

@@ -33,9 +33,9 @@ export default function PersonalInfo() {
   }
 
   return (
-    <article className="relative h-full w-full md:pt-[60px]">
+    <article className="relative h-full w-full bg-white md:pt-[60px]">
       <h2 className="page-title">Personal info</h2>
-      <p className="page-desc text-cool-gray">
+      <p className="page-desc">
         Please provide your name, email adress, and phone number.
       </p>
       <div className="mt-6">

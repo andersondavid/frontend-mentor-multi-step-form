@@ -17,13 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-magnolia">
+      <body className="md:flex h-screen w-screen items-center justify-center bg-magnolia">
         <div className="fixed -z-10 h-1/4 w-full bg-sidebar-mobile bg-cover md:hidden"></div>
         <div className="w-full px-4">
           <MobileStepIndicator />
           <PageContainer>
             <DesktopSidebar />
-            {children}
+            <div className="md:mx-auto w-full md:max-w-[450px]">{children}</div>
           </PageContainer>
         </div>
       </body>
