@@ -16,7 +16,7 @@ export default function FooterNavigation({
   }
 
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-4 md:absolute md:absolute md:mt-auto md:px-0 md:py-4">
+    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-4 md:absolute md:mt-auto md:px-0 md:py-4">
       {previous != undefined && (
         <button
           onClick={() => navigator(previous)}
@@ -28,7 +28,7 @@ export default function FooterNavigation({
       {next != undefined && (
         <button
           onClick={() => navigator(next)}
-          className="ml-auto rounded-md bg-marine-blue p-2 px-4 font-medium text-white"
+          className="ml-auto rounded-md bg-marine-blue p-2 px-4 font-medium text-white md:px-7 md:py-3"
         >
           Next Step
         </button>
@@ -36,7 +36,7 @@ export default function FooterNavigation({
       {confirm != undefined && (
         <button
           onClick={() => confirm()}
-          className="ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white"
+          className="ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white md:px-7 md:py-3"
         >
           Confirm
         </button>
