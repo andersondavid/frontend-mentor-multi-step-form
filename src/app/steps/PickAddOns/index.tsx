@@ -78,7 +78,7 @@ export default function PickAddOns() {
   }
 
   return (
-    <article className="relative h-full w-full md:pt-[60px]">
+    <article className="relative h-full w-full md:pt-[45px]">
       <h2 className="page-title">Pick add-ons</h2>
       <p className="page-desc text-cool-gray">
         Add-ons help enhance your gaming experience.

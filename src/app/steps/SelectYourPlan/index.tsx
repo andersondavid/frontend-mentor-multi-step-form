@@ -71,7 +71,7 @@ export default function SelectYourPlan() {
   })
 
   return (
-    <article className="relative h-full w-full bg-white md:pt-[60px]">
+    <article className="relative h-full w-full bg-white md:pt-[45px]">
       <h2 className="page-title">Select yout plan</h2>
       <p className="page-desc">
         Your have the option of monthly or yearly billing.

@@ -5,7 +5,7 @@ import FooterNavigation, {
 
 export default function FinishingUp() {
   return (
-    <article className="relative h-full w-full md:pt-[60px]">
+    <article className="relative h-full w-full md:pt-[45px]">
       <h2 className="page-title">Finishing up</h2>
       <p className="page-desc text-cool-gray">
         Double-check everythings look OK before confirming.
