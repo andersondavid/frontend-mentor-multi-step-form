@@ -78,12 +78,12 @@ export default function PickAddOns() {
   }
 
   return (
-    <article>
+    <article className="relative h-full w-full md:pt-[45px]">
       <h2 className="page-title">Pick add-ons</h2>
       <p className="page-desc text-cool-gray">
         Add-ons help enhance your gaming experience.
       </p>
-      <div>
+      <div className="mt-6">
         {typeDurationAddOns.map((item) => {
           return (
             <span onClick={() => handleCheckboxChange(item.name)}>

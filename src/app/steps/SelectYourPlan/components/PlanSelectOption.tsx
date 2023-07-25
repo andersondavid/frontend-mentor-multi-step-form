@@ -21,7 +21,7 @@ export default function PlanSelectOption({
         active ? 'border-purplish-blue bg-alabaster ' : 'border-light-gray'
       } my-3 flex rounded-md border-[1px] p-[14px]`}
     >
-      <div className="py-5">
+      <div className="">
         <img src={iconUrl} />
       </div>
       <div className="px-3">

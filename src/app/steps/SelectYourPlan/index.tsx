@@ -72,12 +72,12 @@ export default function SelectYourPlan() {
   
 
   return (
-    <article className="relative h-full w-full md:pt-[60px]">
+    <article>
       <h2 className="page-title">Select yout plan</h2>
       <p className="page-desc text-cool-gray">
         Your have the option of monthly or yearly billing.
       </p>
-      <div className="mt-6">
+      <div>
         {typeDuration.map((item, index) => {
           return (
             <span onClick={() => setPlanSelected(index)}>

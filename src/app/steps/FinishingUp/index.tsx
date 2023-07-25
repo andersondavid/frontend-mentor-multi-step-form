@@ -1,14 +1,16 @@
 import React from 'react'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import FooterNavigation, {
+  Pages,
+} from '@/app/components/FooterNavigation'
 
 export default function FinishingUp() {
   return (
-    <article>
-      <h2 className="page-title">Finishing</h2>
+    <article className="relative h-full w-full md:pt-[45px]">
+      <h2 className="page-title">Finishing up</h2>
       <p className="page-desc text-cool-gray">
         Double-check everythings look OK before confirming.
       </p>
-      <div className="rounded-xl bg-alabaster">
+      <div className="mt-6 rounded-xl bg-alabaster">
         <div className="flex items-center justify-between p-4">
           <div>
             <p className="font-ubuntu font-bold text-marine-blue">
@@ -32,7 +34,7 @@ export default function FinishingUp() {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between px-4 pt-4">
         <p className="font-ubuntu text-cool-gray">Total (per year)</p>
         <p className="font-ubuntu text-lg font-medium text-purplish-blue">
           $120/yr

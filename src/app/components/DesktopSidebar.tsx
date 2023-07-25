@@ -3,7 +3,7 @@ import NumberSelector from './NumberSelector'
 
 export default function DesktopSidebar() {
   return (
-    <div className="mr-4 hidden h-[560px] w-[275px] md:block">
+    <div className="mr-4 hidden h-[568px] w-[275px] md:block">
       <div className="h-full w-full rounded-xl bg-purplish-blue bg-sidebar-desktop px-2 py-3">
         <div className="m-6 flex items-center">
           <NumberSelector number="1" key="1" />

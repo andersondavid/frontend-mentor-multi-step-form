@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import InputField from './InputField'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import FooterNavigation, { Pages } from '@/app/components/FooterNavigation'
 
 const schema = z.object({
   name: z.string().min(1, 'This field is required'),
@@ -33,9 +33,9 @@ export default function PersonalInfo() {
   }
 
   return (
-    <article className="relative h-full w-full">
+    <article className="relative h-full w-full bg-white md:pt-[45px]">
       <h2 className="page-title">Personal info</h2>
-      <p className="page-desc text-cool-gray">
+      <p className="page-desc">
         Please provide your name, email adress, and phone number.
       </p>
       <div className="mt-6">
@@ -70,10 +70,7 @@ export default function PersonalInfo() {
           placeholder="e.g. + 1 234 567 890"
         />
       </div>
-      <FooterNavigation
-        next={Pages.SELECT_YOUR_PLAN}
-        previous={Pages.FINISHING_UP}
-      />
+      <FooterNavigation next={Pages.SELECT_YOUR_PLAN} />
     </article>
   )
 }

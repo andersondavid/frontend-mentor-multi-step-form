@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function ThankYou() {
   return (
-    <article>
-      <div className='py-9 text-center'>
+    <article className='md:flex items-center h-full py-14 md:py-0'>
+      <div className='text-center h-fit'>
         <picture>
-          <img className='m-auto h-14' src="assets/images/icon-thank-you.svg" />
+          <img className='m-auto h-14 md:h-20' src="assets/images/icon-thank-you.svg" />
         </picture>
         <div>
           <h1 className='font-bold text-marine-blue text-2xl mt-6 mb-3'>Thank you!</h1>
