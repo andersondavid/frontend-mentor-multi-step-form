@@ -1,11 +1,11 @@
-'use client'
-
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import InputField from './InputField'
 import FooterNavigation, { Pages } from '@/app/components/FooterNavigation'
+
+import { Context } from '@/store/context'
 
 const schema = z.object({
   name: z.string().min(1, 'This field is required'),
@@ -19,18 +19,35 @@ type FormValues = z.infer<typeof schema>
 
 export default function PersonalInfo() {
   const { register, getValues } = useForm<FormValues>()
+  const [saveValues, setSaveValues] = useState({})
   const [listErrors, setListErrors] = useState<z.ZodIssue | undefined>()
+  const { state, dispatch } = useContext(Context)
 
-  const onSubmit = () => {
+  const onBlur = () => {
     const data = getValues()
     const validInputs = schema.safeParse(data)
     if (validInputs.success) {
+      setSaveValues(validInputs.data)
       setListErrors(undefined)
     } else {
       let errors = validInputs.error?.issues[0]
       setListErrors(errors)
     }
   }
+
+  const sendToContext = () => {
+    const data = getValues()
+    const validInputs = schema.safeParse(data)
+
+    if (validInputs.success) {
+      dispatch({
+        type: 'PERSONAL_INFO',
+        payload: { PersonalInfo: validInputs.data },
+      })
+    }
+  }
+
+  
 
   return (
     <article className="relative h-full w-full bg-white md:pt-[45px]">
@@ -47,6 +64,7 @@ export default function PersonalInfo() {
           name={'name'}
           label={'Name'}
           type={'text'}
+          onBlur={onBlur}
           placeholder="e.g. Stephen King"
         />
         <InputField
@@ -57,6 +75,7 @@ export default function PersonalInfo() {
           name={'email'}
           label={'Email Andress'}
           type={'email'}
+          onBlur={onBlur}
           placeholder="e.g. stephenking@lorem.com"
         />
         <InputField
@@ -67,9 +86,11 @@ export default function PersonalInfo() {
           name={'phone'}
           label={'Phone Number'}
           type={'text'}
+          onBlur={onBlur}
           placeholder="e.g. + 1 234 567 890"
         />
       </div>
+      <button onClick={sendToContext}>Send To Context</button>
       <FooterNavigation next={Pages.SELECT_YOUR_PLAN} />
     </article>
   )

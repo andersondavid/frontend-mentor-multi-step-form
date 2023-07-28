@@ -33,7 +33,7 @@ export default function Home() {
   }
 
   return (
-    <main className="h-full md:flex" onClick={change}>
+    <main className="h-full md:flex">
       {currentPage == Pages.PERSONAL_INFO && <PersonalInfo />}
       {currentPage == Pages.SELECT_YOUR_PLAN && <SelectYourPlan />}
       {currentPage == Pages.PICK_ADDONS && <PickAddOns />}
