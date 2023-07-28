@@ -9,6 +9,7 @@ type PropTypes = {
   id: string
   type: string
   name: string
+  Pages  onBlur: () => void
 }
 
 export default function InputField({
@@ -19,6 +20,7 @@ export default function InputField({
   id,
   name,
   type,
+  onBlur,
   ...inputProps
 }: PropTypes) {
   const errorCheck = error?.path[0] === name
@@ -49,6 +51,7 @@ export default function InputField({
           type={type}
           {...inputProps}
           {...register(name)}
+          onBlur={onBlur}
         />
       </div>
     </div>
