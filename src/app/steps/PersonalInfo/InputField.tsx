@@ -9,7 +9,7 @@ type PropTypes = {
   id: string
   type: string
   name: string
-  Pages  onBlur: () => void
+  onBlur: () => void
 }
 
 export default function InputField({
