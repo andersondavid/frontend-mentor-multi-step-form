@@ -26,7 +26,7 @@ export enum Pages {
   THANK_YOU,
 }
 
-interface IContext {
+export interface IContext {
   personalInfo: {
     name: string
     email: string
@@ -35,8 +35,7 @@ interface IContext {
   subscription: SubscriptionEnums
   plan: PlanEnums
   addons: AddonEnums[]
-  currentPage: string
-  changePage: Dispatch<Pages>
+  currentPage: Pages
 }
 
 type ReducerType = Dispatch<IAction>

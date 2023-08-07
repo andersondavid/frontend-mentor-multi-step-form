@@ -79,7 +79,7 @@ export default function SelectYourPlan() {
       <div className="mt-6 md:flex md:flex-row md:gap-4">
         {typeDuration.map((item, index) => {
           return (
-            <span onClick={() => setPlanSelected(index)} className="flex-1">
+            <span onClick={() => setPlanSelected(index)} className="flex-1" key={item.title}>
               <PlanSelectOption
                 iconUrl={item.iconUrl}
                 title={item.title}

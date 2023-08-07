@@ -3,7 +3,6 @@
 import React, {
   Dispatch,
   SetStateAction,
-  forwardRef,
 } from 'react'
 import Switch from './Switch'
 
@@ -62,4 +61,4 @@ function PlanDurationSwitch({
   )
 }
 
-export default forwardRef(PlanDurationSwitch)
+export default PlanDurationSwitch

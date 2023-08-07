@@ -1,7 +1,7 @@
 const defaultInitialState = {}
 
 export interface IAction {
-  type: 'PERSONAL_INFO' | 'SUBSCRIPTION' | 'PLAN' | 'ADDON'
+  type: 'PERSONAL_INFO' | 'SUBSCRIPTION' | 'PLAN' | 'ADDON' | 'NAVIGATION'
   payload?: any
 }
 
@@ -18,6 +18,8 @@ export const reducer = (
       return { ...state, ...payload }
     case 'PLAN':
       return { ...state, ...payload }
+    case 'NAVIGATION':
+      return { ...state, currentPage: payload }
 
     default:
       return state

@@ -8,7 +8,7 @@ import DesktopSidebar from './components/DesktopSidebar'
 import MobileStepIndicator from './components/MobileStepIndicator'
 import PageContainer from './components/PageContainer'
 
-import { Context } from '@/store/context'
+import { Context, IContext, Pages, PlanEnums, SubscriptionEnums } from '@/store/context'
 import { reducer } from '@/store/reducer'
 
 export const metadata: Metadata = {
@@ -17,12 +17,20 @@ export const metadata: Metadata = {
     'This is a solution to the Multi-step form challenge on Frontend Mentor',
 }
 
+const initialState: IContext = {
+  currentPage: Pages.PERSONAL_INFO,
+  addons: [],
+  personalInfo: { email: '', name: '', phone: '' },
+  plan: PlanEnums.ADVANCE,
+  subscription: SubscriptionEnums.MONTHLY,
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [state, dispatch] = useReducer(reducer, {})
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <Context.Provider value={{ state, dispatch }}>

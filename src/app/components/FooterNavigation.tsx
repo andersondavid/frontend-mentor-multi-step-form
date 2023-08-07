@@ -1,4 +1,5 @@
-import React from 'react'
+import { Context } from '@/store/context'
+import React, { useContext } from 'react'
 
 type PropsTypes = {
   next?: Pages
@@ -11,8 +12,12 @@ export default function FooterNavigation({
   previous,
   confirm,
 }: PropsTypes) {
+  const { state, dispatch } = useContext(Context)
   const navigator = (router: Pages) => {
-    console.log('navigator ', router)
+    dispatch({
+      type: 'NAVIGATION',
+      payload: router
+    })
   }
 
   return (

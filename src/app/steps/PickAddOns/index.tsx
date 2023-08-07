@@ -86,7 +86,7 @@ export default function PickAddOns() {
       <div className="mt-6">
         {typeDurationAddOns.map((item) => {
           return (
-            <span onClick={() => handleCheckboxChange(item.name)}>
+            <span onClick={() => handleCheckboxChange(item.name)} key={item.title}>
               <AddOnsSelectOption
                 checked={item.checked}
                 desc={item.desc}
