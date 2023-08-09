@@ -19,35 +19,23 @@ type FormValues = z.infer<typeof schema>
 
 export default function PersonalInfo() {
   const { register, getValues } = useForm<FormValues>()
-  const [saveValues, setSaveValues] = useState({})
   const [listErrors, setListErrors] = useState<z.ZodIssue | undefined>()
-  const { state, dispatch } = useContext(Context)
+  const { dispatch } = useContext(Context)
 
   const onBlur = () => {
     const data = getValues()
     const validInputs = schema.safeParse(data)
     if (validInputs.success) {
-      setSaveValues(validInputs.data)
       setListErrors(undefined)
+      dispatch({
+        type: 'PERSONAL_INFO',
+        payload: { PersonalInfo: validInputs.data },
+      })
     } else {
       let errors = validInputs.error?.issues[0]
       setListErrors(errors)
     }
   }
-
-  const sendToContext = () => {
-    const data = getValues()
-    const validInputs = schema.safeParse(data)
-
-    if (validInputs.success) {
-      dispatch({
-        type: 'PERSONAL_INFO',
-        payload: { PersonalInfo: validInputs.data },
-      })
-    }
-  }
-
-  
 
   return (
     <article className="relative h-full w-full bg-white md:pt-[45px]">
@@ -90,7 +78,6 @@ export default function PersonalInfo() {
           placeholder="e.g. + 1 234 567 890"
         />
       </div>
-      <button onClick={sendToContext}>Send To Context</button>
       <FooterNavigation next={Pages.SELECT_YOUR_PLAN} />
     </article>
   )

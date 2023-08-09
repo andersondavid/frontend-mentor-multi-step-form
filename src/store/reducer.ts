@@ -11,13 +11,13 @@ export const reducer = (
 ) => {
   switch (type) {
     case 'PERSONAL_INFO':
-      return console.log({ ...state, ...payload })
+      return { ...state, personalInfo: payload  }
     case 'SUBSCRIPTION':
-      return { ...state, ...payload }
+      return { ...state, subscription: payload }
     case 'ADDON':
-      return { ...state, ...payload }
+      return { ...state, addons: payload }
     case 'PLAN':
-      return { ...state, ...payload }
+      return { ...state, plan: payload }
     case 'NAVIGATION':
       return { ...state, currentPage: payload }
 

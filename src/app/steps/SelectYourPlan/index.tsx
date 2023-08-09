@@ -1,20 +1,17 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PlanSelectOption from './components/PlanSelectOption'
 import PlanDurationSwitch from './components/PlanDurationSwitch'
 import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import { Context, SubscriptionEnums, PlanEnums } from '@/store/context'
 
 type PlanItem = {
   iconUrl: string
   title: string
   price: string
   extra?: string
-}
-
-enum Duration {
-  Monthy = 'MONTHY',
-  Yearly = 'YEARLY',
+  planEnum: PlanEnums
 }
 
 const monthlyPlan: PlanItem[] = [
@@ -22,16 +19,19 @@ const monthlyPlan: PlanItem[] = [
     iconUrl: '/assets/images/icon-arcade.svg',
     title: 'Arcade',
     price: '$9/mo',
+    planEnum: PlanEnums.ARCADE
   },
   {
     iconUrl: '/assets/images/icon-advanced.svg',
     title: 'Advance',
     price: '$12/mo',
+    planEnum: PlanEnums.ADVANCE
   },
   {
     iconUrl: '/assets/images/icon-pro.svg',
     title: 'Pro',
     price: '$15/mo',
+    planEnum: PlanEnums.PRO
   },
 ]
 const yearlyPlan: PlanItem[] = [
@@ -40,35 +40,47 @@ const yearlyPlan: PlanItem[] = [
     title: 'Arcade',
     price: '$90/yr"',
     extra: '2 months free',
+    planEnum: PlanEnums.ARCADE
   },
   {
     iconUrl: '/assets/images/icon-advanced.svg',
     title: 'Advance',
     price: '$120/yr',
     extra: '2 months free',
+    planEnum: PlanEnums.ADVANCE
   },
   {
     iconUrl: '/assets/images/icon-pro.svg',
     title: 'Pro',
     price: '$150/yr',
     extra: '2 months free',
+    planEnum: PlanEnums.PRO
   },
 ]
 
 export default function SelectYourPlan() {
-  const [typeDuration, setTypeDuration] = useState<PlanItem[]>(monthlyPlan)
-  const [planSelected, setPlanSelected] = useState<number>(0)
-  const [durationCurrent, setDurationCurrent] = useState<Duration>(
-    Duration.Monthy
+  const { state, dispatch } = useContext(Context)
+  const [plansItemsList, setPlansItemsList] = useState<PlanItem[]>(monthlyPlan)
+  const [planItemSelected, setPlanItemSelected] = useState<PlanEnums>(state.plan)
+  const [durationCurrent, setDurationCurrent] = useState<SubscriptionEnums>(
+    state.subscription
   )
 
   useEffect(() => {
-    if (durationCurrent == Duration.Monthy) {
-      setTypeDuration(monthlyPlan)
-    } else if (durationCurrent == Duration.Yearly) {
-      setTypeDuration(yearlyPlan)
+    if (durationCurrent == SubscriptionEnums.MONTHLY) {
+      setPlansItemsList(monthlyPlan)
+    } else if (durationCurrent == SubscriptionEnums.YEARLY) {
+      setPlansItemsList(yearlyPlan)
     }
   })
+
+  const handleCheckbox = (item: PlanItem) => {
+    setPlanItemSelected(item.planEnum)
+    dispatch({
+      type: 'PLAN',
+      payload: item.planEnum
+    })
+  }
 
   return (
     <article className="relative h-full w-full md:pt-[45px]">
@@ -77,15 +89,19 @@ export default function SelectYourPlan() {
         Your have the option of monthly or yearly billing.
       </p>
       <div className="mt-6 md:flex md:flex-row md:gap-4">
-        {typeDuration.map((item, index) => {
+        {plansItemsList.map((item) => {
           return (
-            <span onClick={() => setPlanSelected(index)} className="flex-1" key={item.title}>
+            <span
+              onClick={() => handleCheckbox(item)}
+              className="flex-1"
+              key={item.title}
+            >
               <PlanSelectOption
                 iconUrl={item.iconUrl}
                 title={item.title}
                 price={item.price}
                 extra={item.extra}
-                active={planSelected == index}
+                active={planItemSelected == item.planEnum}
                 key={item.title}
               />
             </span>

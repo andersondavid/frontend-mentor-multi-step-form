@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AddOnsSelectOption from './components/AddOnsSelectOption'
 import FooterNavigation, { Pages } from '../../components/FooterNavigation'
+import { Context } from '@/store/context'
 
 type PlanItemAddOns = {
   name: string
@@ -60,21 +61,31 @@ const yearlyPlansAddOns: PlanItemAddOns[] = [
 ]
 
 export default function PickAddOns() {
+  const { state, dispatch } = useContext(Context)
   const [typeDurationAddOns, setTypeDurationAddOns] =
     useState<PlanItemAddOns[]>(yearlyPlansAddOns)
 
   const handleCheckboxChange = (name: string) => {
-    setTypeDurationAddOns(
-      typeDurationAddOns.map((item) => {
-        if (item.name === name) {
-          return {
-            ...item,
-            checked: !item.checked,
-          }
+    let addonDataUpdated = typeDurationAddOns.map((item) => {
+      if (item.name === name) {
+        return {
+          ...item,
+          checked: !item.checked,
         }
+      }
+      return item
+    })
+
+    let itemsChecked = addonDataUpdated.map((item) => {
+      if (item.checked) {
         return item
-      })
-    )
+      }
+    })
+    setTypeDurationAddOns(addonDataUpdated)
+    dispatch({
+      type: 'ADDON',
+      payload: itemsChecked
+    })
   }
 
   return (
@@ -86,7 +97,10 @@ export default function PickAddOns() {
       <div className="mt-6">
         {typeDurationAddOns.map((item) => {
           return (
-            <span onClick={() => handleCheckboxChange(item.name)} key={item.title}>
+            <span
+              onClick={() => handleCheckboxChange(item.name)}
+              key={item.title}
+            >
               <AddOnsSelectOption
                 checked={item.checked}
                 desc={item.desc}
@@ -98,7 +112,10 @@ export default function PickAddOns() {
           )
         })}
       </div>
-      <FooterNavigation next={Pages.FINISHING_UP} previous={Pages.SELECT_YOUR_PLAN} />
+      <FooterNavigation
+        next={Pages.FINISHING_UP}
+        previous={Pages.SELECT_YOUR_PLAN}
+      />
     </article>
   )
 }

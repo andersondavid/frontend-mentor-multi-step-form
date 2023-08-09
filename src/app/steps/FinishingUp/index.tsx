@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FooterNavigation, {
   Pages,
 } from '@/app/components/FooterNavigation'
+import { Context } from '@/store/context'
 
 export default function FinishingUp() {
+  const { state, dispatch } = useContext(Context)
+  console.log('State:', state);
+  
   return (
     <article className="relative h-full w-full md:pt-[45px]">
       <h2 className="page-title">Finishing up</h2>
