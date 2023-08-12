@@ -31,7 +31,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [state, dispatch] = useReducer(reducer, initialState)
-
   return (
     <Context.Provider value={{ state, dispatch }}>
       <html lang="en">

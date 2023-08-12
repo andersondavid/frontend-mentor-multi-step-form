@@ -8,23 +8,23 @@ import Switch from './Switch'
 import { SubscriptionEnums } from '@/store/context'
 
 type PropsTypes = {
-  durationCurrent: SubscriptionEnums
-  setDurationCurrent: Dispatch<SetStateAction<SubscriptionEnums>>
+  subscriptionKind: SubscriptionEnums
+  setSubscriptionKind: Dispatch<SetStateAction<SubscriptionEnums>>
 }
 
 function PlanDurationSwitch({
-  durationCurrent,
-  setDurationCurrent,
+  subscriptionKind,
+  setSubscriptionKind,
 }: PropsTypes) {
   const changeDurationHandler = (value?: SubscriptionEnums) => {
     if (value == SubscriptionEnums.MONTHLY) {
-      setDurationCurrent(SubscriptionEnums.MONTHLY)
+      setSubscriptionKind(SubscriptionEnums.MONTHLY)
     } else if (value == SubscriptionEnums.YEARLY) {
-      setDurationCurrent(SubscriptionEnums.YEARLY)
-    } else if (value == undefined && durationCurrent == SubscriptionEnums.MONTHLY) {
-      setDurationCurrent(SubscriptionEnums.YEARLY)
-    } else if (value == undefined && durationCurrent == SubscriptionEnums.YEARLY) {
-      setDurationCurrent(SubscriptionEnums.MONTHLY)
+      setSubscriptionKind(SubscriptionEnums.YEARLY)
+    } else if (value == undefined && subscriptionKind == SubscriptionEnums.MONTHLY) {
+      setSubscriptionKind(SubscriptionEnums.YEARLY)
+    } else if (value == undefined && subscriptionKind == SubscriptionEnums.YEARLY) {
+      setSubscriptionKind(SubscriptionEnums.MONTHLY)
     }
   }
 
@@ -33,7 +33,7 @@ function PlanDurationSwitch({
       <button
         onClick={() => changeDurationHandler(SubscriptionEnums.MONTHLY)}
         className={`${
-          durationCurrent == SubscriptionEnums.MONTHLY
+          subscriptionKind == SubscriptionEnums.MONTHLY
             ? 'text-marine-blue'
             : 'text-cool-gray'
         } mx-5 font-medium`}
@@ -41,12 +41,12 @@ function PlanDurationSwitch({
         Monthy
       </button>
       <button onClick={() => changeDurationHandler()}>
-        <Switch duration={durationCurrent} />
+        <Switch duration={subscriptionKind} />
       </button>
       <button
         onClick={() => changeDurationHandler(SubscriptionEnums.YEARLY)}
         className={`${
-          durationCurrent == SubscriptionEnums.YEARLY
+          subscriptionKind == SubscriptionEnums.YEARLY
             ? 'text-marine-blue'
             : 'text-cool-gray'
         } mx-5 font-medium`}

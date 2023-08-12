@@ -1,5 +1,6 @@
-const defaultInitialState = {}
+import { IContext } from "./context"
 
+let defaultInitialState: IContext
 export interface IAction {
   type: 'PERSONAL_INFO' | 'SUBSCRIPTION' | 'PLAN' | 'ADDON' | 'NAVIGATION'
   payload?: any

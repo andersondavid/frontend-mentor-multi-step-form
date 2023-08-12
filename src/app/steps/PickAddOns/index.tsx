@@ -1,69 +1,22 @@
 'use client'
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AddOnsSelectOption from './components/AddOnsSelectOption'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
-import { Context } from '@/store/context'
-
-type PlanItemAddOns = {
-  name: string
-  checked: boolean
-  title: string
-  desc: string
-  price: string
-}
-
-const monthlyPlansAddOns: PlanItemAddOns[] = [
-  {
-    name: 'onlineServices',
-    title: 'Online service',
-    price: '+$1/mo',
-    checked: false,
-    desc: 'Access to multiplayer games',
-  },
-  {
-    name: 'largerStorage',
-    title: 'Larger storate',
-    price: '+$2/mo',
-    checked: false,
-    desc: 'Extra 1TB of cloud save',
-  },
-  {
-    name: 'customProfile',
-    title: 'Customizable profile',
-    price: '+$2/mo',
-    checked: false,
-    desc: 'Custom theme on your profile',
-  },
-]
-const yearlyPlansAddOns: PlanItemAddOns[] = [
-  {
-    name: 'onlineServices',
-    title: 'Online service',
-    price: '+$10/yr',
-    checked: false,
-    desc: 'Access to multiplayer games',
-  },
-  {
-    name: 'largerStorage',
-    title: 'Larger storate',
-    price: '+$20/ye',
-    checked: false,
-    desc: 'Extra 1TB of cloud save',
-  },
-  {
-    name: 'customProfile',
-    title: 'Customizable profile',
-    price: '+$20/yr',
-    checked: false,
-    desc: 'Custom theme on your profile',
-  },
-]
+import FooterNavigation from '../../components/FooterNavigation'
+import { Context, Pages, PlanItemAddOns, SubscriptionEnums } from '@/store/context'
+import { addonsData } from '@/store/offersData'
 
 export default function PickAddOns() {
   const { state, dispatch } = useContext(Context)
-  const [typeDurationAddOns, setTypeDurationAddOns] =
-    useState<PlanItemAddOns[]>(yearlyPlansAddOns)
+  const [typeDurationAddOns, setTypeDurationAddOns] = useState<
+    PlanItemAddOns[]
+  >(addonsData.monthlyPlansAddOns)
+
+  useEffect(() => {
+    if (state.subscription == SubscriptionEnums.YEARLY) {
+      setTypeDurationAddOns(addonsData.yearlyPlansAddOns)
+    }
+  }, [state.subscription])
 
   const handleCheckboxChange = (name: string) => {
     let addonDataUpdated = typeDurationAddOns.map((item) => {
@@ -78,13 +31,13 @@ export default function PickAddOns() {
 
     let itemsChecked = addonDataUpdated.map((item) => {
       if (item.checked) {
-        return item
+        return item.addonEnum
       }
     })
     setTypeDurationAddOns(addonDataUpdated)
     dispatch({
       type: 'ADDON',
-      payload: itemsChecked
+      payload: itemsChecked,
     })
   }
 

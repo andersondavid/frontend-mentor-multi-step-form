@@ -1,13 +1,16 @@
-import React, { useContext } from 'react'
-import FooterNavigation, {
-  Pages,
-} from '@/app/components/FooterNavigation'
-import { Context } from '@/store/context'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import FooterNavigation from '@/app/components/FooterNavigation'
+import { Context, Pages } from '@/store/context'
+import { dataFormat } from '@/utils/dataFormat'
+import ConfirmAddonListItem from './components/ConfirmAddonListItem'
+import { calculatePrice } from '@/utils/calculatePrice'
 
 export default function FinishingUp() {
-  const { state, dispatch } = useContext(Context)
-  console.log('State:', state);
-  
+  const { state } = useContext(Context)
+
+  const budget = calculatePrice(state)
+  const dataFormated = dataFormat(state, budget)
+
   return (
     <article className="relative h-full w-full md:pt-[45px]">
       <h2 className="page-title">Finishing up</h2>
@@ -18,7 +21,7 @@ export default function FinishingUp() {
         <div className="flex items-center justify-between p-4">
           <div>
             <p className="font-ubuntu font-bold text-marine-blue">
-              Arcade (Monthly)
+              {dataFormated?.planText} ({dataFormated?.subscriptionText})
             </p>
             <p className="font-ubuntu text-cool-gray underline">Change</p>
           </div>
@@ -28,20 +31,15 @@ export default function FinishingUp() {
         </div>
         <hr className="mx-4 border-light-gray" />
         <div className="p-4 pt-1">
-          <div className="mt-2 flex justify-between">
-            <p className="font-ubuntu text-cool-gray">Online services</p>
-            <p className="font-ubuntu text-marine-blue">+1/mo</p>
-          </div>
-          <div className="mt-2 flex justify-between">
-            <p className="font-ubuntu text-cool-gray">Larger storage</p>
-            <p className="font-ubuntu text-marine-blue">+1/mo</p>
-          </div>
+          {dataFormated.addons.length > 0 && (
+            <ConfirmAddonListItem listData={dataFormated.addons} />
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between px-4 pt-4">
         <p className="font-ubuntu text-cool-gray">Total (per year)</p>
         <p className="font-ubuntu text-lg font-medium text-purplish-blue">
-          $120/yr
+          {dataFormated.totalBudget}
         </p>
       </div>
       <FooterNavigation previous={Pages.PICK_ADDONS} confirm={() => {}} />

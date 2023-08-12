@@ -1,4 +1,4 @@
-import { Context } from '@/store/context'
+import { Context, Pages } from '@/store/context'
 import React, { useContext } from 'react'
 
 type PropsTypes = {
@@ -48,12 +48,4 @@ export default function FooterNavigation({
       )}
     </div>
   )
-}
-
-export enum Pages {
-  PERSONAL_INFO,
-  SELECT_YOUR_PLAN,
-  PICK_ADDONS,
-  FINISHING_UP,
-  THANK_YOU,
 }

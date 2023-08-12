@@ -1,29 +1,48 @@
 import { Dispatch, createContext } from 'react'
 import { IAction } from './reducer'
 
-enum SubscriptionEnums {
-  YEARLY,
-  MONTHLY,
+export enum SubscriptionEnums {
+  YEARLY = 'YEARLY',
+  MONTHLY = 'MONTHLY',
 }
 
-enum PlanEnums {
-  ARCADE,
-  ADVANCE,
-  PRO,
+export enum PlanEnums {
+  ARCADE = 'ARCADE',
+  ADVANCE = 'ADVANCE',
+  PRO = 'PRO',
 }
 
-enum AddonEnums {
-  ONLINE_SERVICES,
-  LARGE_STORAGE,
-  CUSTOM_PROFILE,
+export type PlanItem = {
+  iconUrl: string
+  title: string
+  price: string
+  extra?: string
+  planEnum: PlanEnums
+  priceNumber: number
+}
+
+export enum AddonEnums {
+  ONLINE_SERVICES = 'ONLINE_SERVICES',
+  LARGE_STORAGE = 'LARGE_STORAGE',
+  CUSTOM_PROFILE = 'CUSTOM_PROFILE',
 }
 
 export enum Pages {
-  PERSONAL_INFO,
-  SELECT_YOUR_PLAN,
-  PICK_ADDONS,
-  FINISHING_UP,
-  THANK_YOU,
+  PERSONAL_INFO = 'PERSONAL_INFO',
+  SELECT_YOUR_PLAN = 'SELECT_YOUR_PLAN',
+  PICK_ADDONS = 'PICK_ADDONS',
+  FINISHING_UP =  'FINISHING_UP',
+  THANK_YOU = 'THANK_YOU',
+}
+
+export type PlanItemAddOns = {
+  name: string
+  checked: boolean
+  title: string
+  desc: string
+  price: string
+  addonEnum: AddonEnums
+  priceNumber: number
 }
 
 export interface IContext {
@@ -40,6 +59,6 @@ export interface IContext {
 
 type ReducerType = Dispatch<IAction>
 
-const Context = createContext({} as { state: IContext; dispatch: ReducerType })
 
-export { SubscriptionEnums, PlanEnums, AddonEnums, Context }
+
+export const Context = createContext({} as { state: IContext; dispatch: ReducerType })

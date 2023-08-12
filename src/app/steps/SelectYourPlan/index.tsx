@@ -3,82 +3,39 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PlanSelectOption from './components/PlanSelectOption'
 import PlanDurationSwitch from './components/PlanDurationSwitch'
-import FooterNavigation, { Pages } from '../../components/FooterNavigation'
-import { Context, SubscriptionEnums, PlanEnums } from '@/store/context'
-
-type PlanItem = {
-  iconUrl: string
-  title: string
-  price: string
-  extra?: string
-  planEnum: PlanEnums
-}
-
-const monthlyPlan: PlanItem[] = [
-  {
-    iconUrl: '/assets/images/icon-arcade.svg',
-    title: 'Arcade',
-    price: '$9/mo',
-    planEnum: PlanEnums.ARCADE
-  },
-  {
-    iconUrl: '/assets/images/icon-advanced.svg',
-    title: 'Advance',
-    price: '$12/mo',
-    planEnum: PlanEnums.ADVANCE
-  },
-  {
-    iconUrl: '/assets/images/icon-pro.svg',
-    title: 'Pro',
-    price: '$15/mo',
-    planEnum: PlanEnums.PRO
-  },
-]
-const yearlyPlan: PlanItem[] = [
-  {
-    iconUrl: '/assets/images/icon-arcade.svg',
-    title: 'Arcade',
-    price: '$90/yr"',
-    extra: '2 months free',
-    planEnum: PlanEnums.ARCADE
-  },
-  {
-    iconUrl: '/assets/images/icon-advanced.svg',
-    title: 'Advance',
-    price: '$120/yr',
-    extra: '2 months free',
-    planEnum: PlanEnums.ADVANCE
-  },
-  {
-    iconUrl: '/assets/images/icon-pro.svg',
-    title: 'Pro',
-    price: '$150/yr',
-    extra: '2 months free',
-    planEnum: PlanEnums.PRO
-  },
-]
+import FooterNavigation from '../../components/FooterNavigation'
+import { Context, SubscriptionEnums, PlanEnums, PlanItem, Pages } from '@/store/context'
+import { plansData } from '@/store/offersData'
 
 export default function SelectYourPlan() {
   const { state, dispatch } = useContext(Context)
-  const [plansItemsList, setPlansItemsList] = useState<PlanItem[]>(monthlyPlan)
-  const [planItemSelected, setPlanItemSelected] = useState<PlanEnums>(state.plan)
-  const [durationCurrent, setDurationCurrent] = useState<SubscriptionEnums>(
+  const [plansItemsList, setPlansItemsList] = useState<PlanItem[]>(plansData.monthlyPlan)
+  const [planItemSelected, setPlanItemSelected] = useState<PlanEnums>(
+    state.plan
+  )
+  const [subscriptionKind, setSubscriptionKind] = useState<SubscriptionEnums>(
     state.subscription
   )
 
   useEffect(() => {
-    if (durationCurrent == SubscriptionEnums.MONTHLY) {
-      setPlansItemsList(monthlyPlan)
-    } else if (durationCurrent == SubscriptionEnums.YEARLY) {
-      setPlansItemsList(yearlyPlan)
+    if (subscriptionKind == SubscriptionEnums.MONTHLY) {
+      setPlansItemsList(plansData.monthlyPlan)
+    } else if (subscriptionKind == SubscriptionEnums.YEARLY) {
+      setPlansItemsList(plansData.yearlyPlan)
     }
-  })
+
+    dispatch({
+      type: 'SUBSCRIPTION',
+      payload: subscriptionKind
+    })
+    
+  }, [subscriptionKind])
 
   const handleCheckbox = (item: PlanItem) => {
     setPlanItemSelected(item.planEnum)
     dispatch({
       type: 'PLAN',
-      payload: item.planEnum
+      payload: item.planEnum,
     })
   }
 
@@ -109,8 +66,8 @@ export default function SelectYourPlan() {
         })}
       </div>
       <PlanDurationSwitch
-        durationCurrent={durationCurrent}
-        setDurationCurrent={setDurationCurrent}
+        subscriptionKind={subscriptionKind}
+        setSubscriptionKind={setSubscriptionKind}
       />
       <FooterNavigation
         next={Pages.PICK_ADDONS}
