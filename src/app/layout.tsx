@@ -1,7 +1,6 @@
 'use client'
 import { useReducer } from 'react'
-import Head from 'next/head'
-import type { Metadata } from 'next'
+//import Head from 'next/head'
 import './globals.css'
 
 import DesktopSidebar from './components/DesktopSidebar'
@@ -17,11 +16,6 @@ import {
 } from '@/store/context'
 import { reducer } from '@/store/reducer'
 
-export const metadata: Metadata = {
-  title: 'Frontend Mentor - Multi-step form',
-  description:
-    'This is a solution to the Multi-step form challenge on Frontend Mentor',
-}
 
 const initialState: IContext = {
   currentPage: Pages.PERSONAL_INFO,
