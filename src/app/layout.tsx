@@ -1,6 +1,6 @@
 'use client'
 import { useReducer } from 'react'
-
+import Head from 'next/head'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -8,7 +8,13 @@ import DesktopSidebar from './components/DesktopSidebar'
 import MobileStepIndicator from './components/MobileStepIndicator'
 import PageContainer from './components/PageContainer'
 
-import { Context, IContext, Pages, PlanEnums, SubscriptionEnums } from '@/store/context'
+import {
+  Context,
+  IContext,
+  Pages,
+  PlanEnums,
+  SubscriptionEnums,
+} from '@/store/context'
 import { reducer } from '@/store/reducer'
 
 export const metadata: Metadata = {
@@ -34,6 +40,9 @@ export default function RootLayout({
   return (
     <Context.Provider value={{ state, dispatch }}>
       <html lang="en">
+        {/* <Head> */}
+          <title>Frontend Mentor - Multi-step form</title>
+        {/* </Head> */}
         <body className="h-screen w-screen items-center justify-center bg-magnolia md:flex">
           <div className="fixed -z-10 h-1/4 w-full bg-sidebar-mobile bg-cover md:hidden"></div>
           <div className="w-full px-4">
