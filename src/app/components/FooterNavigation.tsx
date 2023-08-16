@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 type PropsTypes = {
   next?: Pages
   previous?: Pages
-  confirm?: () => void
+  confirm?: (arg0: any) => void
 }
 
 export default function FooterNavigation({
@@ -40,7 +40,7 @@ export default function FooterNavigation({
       )}
       {confirm != undefined && (
         <button
-          onClick={() => confirm()}
+          onClick={confirm}
           className="ml-auto rounded-md bg-purplish-blue p-2 px-4 font-medium text-white md:px-7 md:py-3"
         >
           Confirm

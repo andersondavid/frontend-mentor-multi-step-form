@@ -3,21 +3,21 @@ import { AddonEnums, PlanEnums, PlanItem, PlanItemAddOns } from './context'
 export const plansData: { monthlyPlan: PlanItem[]; yearlyPlan: PlanItem[] } = {
   monthlyPlan: [
     {
-      iconUrl: '/assets/images/icon-arcade.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-arcade.svg',
       title: 'Arcade',
       price: '$9/mo',
       planEnum: PlanEnums.ARCADE,
       priceNumber: 9,
     },
     {
-      iconUrl: '/assets/images/icon-advanced.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-advanced.svg',
       title: 'Advance',
       price: '$12/mo',
       planEnum: PlanEnums.ADVANCE,
       priceNumber: 12,
     },
     {
-      iconUrl: '/assets/images/icon-pro.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-pro.svg',
       title: 'Pro',
       price: '$15/mo',
       planEnum: PlanEnums.PRO,
@@ -26,7 +26,7 @@ export const plansData: { monthlyPlan: PlanItem[]; yearlyPlan: PlanItem[] } = {
   ],
   yearlyPlan: [
     {
-      iconUrl: '/assets/images/icon-arcade.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-arcade.svg',
       title: 'Arcade',
       price: '$90/yr"',
       extra: '2 months free',
@@ -34,7 +34,7 @@ export const plansData: { monthlyPlan: PlanItem[]; yearlyPlan: PlanItem[] } = {
       priceNumber: 90,
     },
     {
-      iconUrl: '/assets/images/icon-advanced.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-advanced.svg',
       title: 'Advance',
       price: '$120/yr',
       extra: '2 months free',
@@ -42,7 +42,7 @@ export const plansData: { monthlyPlan: PlanItem[]; yearlyPlan: PlanItem[] } = {
       priceNumber: 120,
     },
     {
-      iconUrl: '/assets/images/icon-pro.svg',
+      iconUrl: 'https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/icon-pro.svg',
       title: 'Pro',
       price: '$150/yr',
       extra: '2 months free',

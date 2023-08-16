@@ -6,10 +6,17 @@ import ConfirmAddonListItem from './components/ConfirmAddonListItem'
 import { calculatePrice } from '@/utils/calculatePrice'
 
 export default function FinishingUp() {
-  const { state } = useContext(Context)
+  const { state, dispatch } = useContext(Context)
 
   const budget = calculatePrice(state)
   const dataFormated = dataFormat(state, budget)
+
+  const confirm = () => {
+    dispatch({
+      type: 'NAVIGATION',
+      payload: Pages.THANK_YOU
+    })
+  }
 
   return (
     <article className="relative h-full w-full md:pt-[45px]">
@@ -42,7 +49,7 @@ export default function FinishingUp() {
           {dataFormated.totalBudget}
         </p>
       </div>
-      <FooterNavigation previous={Pages.PICK_ADDONS} confirm={() => {}} />
+      <FooterNavigation previous={Pages.PICK_ADDONS} confirm={confirm} />
     </article>
   )
 }

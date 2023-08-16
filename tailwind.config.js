@@ -25,8 +25,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'sidebar-mobile': "url('/assets/images/bg-sidebar-mobile.svg')",
-        'sidebar-desktop': "url('/assets/images/bg-sidebar-desktop.svg')",
+        'sidebar-mobile': "url('https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/bg-sidebar-mobile.svg')",
+        'sidebar-desktop': "url('https://raw.githubusercontent.com/andersondavid/frontend-mentor-multi-step-form/main/public/assets/images/bg-sidebar-desktop.svg')",
       },
     },
   },
